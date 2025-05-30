@@ -108,4 +108,5 @@ router.get("/admin/articles/edit/:id", (req, res) => {
     });
 });
 
+Article.sync({force: false})
 module.exports = router;

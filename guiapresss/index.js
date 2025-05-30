@@ -62,8 +62,3 @@ app.get("/:slug", (req,res) => {
 app.listen(4000, () => {
     console.log("o servidor está rodando")
 })
-
-//maria
-//julyaaa
-//oii
-//ola

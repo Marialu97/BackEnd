@@ -8,12 +8,12 @@
             <h2>Criação de Usuário</h2>
         </div>
         <div class="card-body">
-            <form>
+            <form action="/users/create" method="POST">
                 <input class="form-control" name="email" type="email" placeholder="email@exemplo.com"><br>
                 <input class="form-control" name="password" type="password" placeholder="**********"><br>
-                <button type=""></button>
+                <button type="submit" class="btn btn-success btn-block">Criar</button>
 
             </form>
         </div>
-   <%- include ("../../partials/footer.ejs") %>
+<%- include ("../../partials/footer.ejs") %>
 
