@@ -1,0 +1,57 @@
+<%- include ("../../partials/header.ejs") %>
+<%- include ("../../partials/navbar.ejs") %>
+
+<div class="container">
+    <hr>
+    <div class="card">
+        <div class="card-header">
+            <h2>Editar Artigo</h2>
+        </div>
+        <div class="card-body">
+            <form method="POST" action="/articles/save">
+                <!-- Campo oculto com o ID do artigo -->
+                <input type="hidden" name="id" value="<%= article.id %>">
+
+                <!-- Título do artigo -->
+                <input class="form-control" type="text" name="title" placeholder="Defina o Título do Artigo" value="<%= article.title %>"><br>
+
+                <!-- Corpo do artigo com conteúdo já inserido -->
+                <textarea class="form-control" name="body" id="article" placeholder="Escreva o conteúdo aqui!"><%= article.body %></textarea><br>
+
+                <!-- Seleção de categoria com a atual pré-selecionada -->
+                <label>Categoria</label>
+                <select name="category" class="form-control">
+                    <% categories.forEach((category) => { %>
+                        <option value="<%= category.id %>" <%= category.id === article.categoryId ? "selected" : "" %>>
+                            <%= category.title %>
+                        </option>
+                    <% }) %>
+                </select><br>
+
+                <!-- Botão de envio -->
+                <button class="btn btn-success">Atualizar</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<%- include ("../../partials/footer.ejs") %>
+
+<!-- TinyMCE -->
+<script src="/tinymce/tinymce.min.js"></script>
+<script>
+    tinymce.init({
+        language: 'pt_BR',
+        selector: "#article",
+        plugins: [
+            'advlist autolink link image lists print preview hr searchreplace wordcount fullscreen insertdatetime media save table paste emoticons'
+        ],
+        toolbar:
+            'undo redo | formatselect | bold italic backcolor | \
+            alignleft aligncenter alignright alignjustify | \
+            bullist numlist outdent indent | removeformat | help'
+    });
+</script>
+ <!-- TinyMCE -->
+   <!-- TinyMCE -->
+     <!-- TinyMCE -->
