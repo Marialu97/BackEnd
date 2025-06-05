@@ -9,11 +9,12 @@
         </div>
         <div class="card-body">
             <form method="POST" action="/articles/save">
-                <input class="form-control" type="text" name="title" placeholder="Título do artigo"><br>
-                <textarea class="form-control" name="body" id="article" placeholder="Escreva o conteúdo aqui!"></textarea><br>
-                
+                <input class="form-control" type="text" name="title" placeholder="Título do artigo" required><br>
+
+                <textarea id="editor" class="form-control" name="body" rows="6" placeholder="Escreva o conteúdo aqui!" required></textarea><br>
+
                 <label>Categoria</label>
-                <select name="category" class="form-control">
+                <select name="category" class="form-control" required>
                     <% categories.forEach((category) => { %>
                         <option value="<%= category.id %>"><%= category.title %></option>
                     <% }) %>
@@ -27,12 +28,13 @@
 
 <%- include ("../../partials/footer.ejs") %>
 
-<script src="/tinymce/tinymce.min.js"></script>
+<!-- Inicialização do Simditor -->
+<script src="/simditor/simditor.js"></script>
+<link rel="stylesheet" href="/simditor/simditor.css">
+
 <script>
-    tinymce.init({
-        selector: "#article",
-        plugins: [
-            'advlist autolink link image lists print preview hr searchreplace wordcount fullscreen insertdatetime media save table paste emoticons'
-        ]
+    var editor = new Simditor({
+        textarea: $('#editor')
+        // Adicione outras opções aqui, se necessário
     });
 </script>

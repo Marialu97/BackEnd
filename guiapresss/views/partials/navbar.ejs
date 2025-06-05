@@ -1,14 +1,43 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-    <a class="navbar-brand" href="/">
-        GuiaPress
-    </a>
+    <a class="navbar-brand" href="/">GuiaPress</a>
 
-    <ul class="navbar-nav mr-auto">
-        <li class="nav-item">
-            <a class="nav-link" href="/admin/categories">Categorias</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="/admin/articles">Artigos</a>
-        </li>
-    </ul>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarNav">
+
+        <!-- Itens à esquerda -->
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="/">Home</a>
+            </li>
+
+            <% categories.forEach(category => { %>
+                <li class="nav-item">
+                    <a class="nav-link" href="/category/<%= category.slug %>"><%= category.title %></a>
+                </li>
+            <% }) %>
+        </ul>
+
+        <!-- Itens à direita -->
+        <ul class="navbar-nav ml-auto">
+            <% if (!user) { %>
+                <li class="nav-item">
+                    <a class="nav-link" href="/login">Login</a>
+                </li>
+            <% } else { %>
+                <li class="nav-item">
+                    <span class="navbar-text mr-2">
+                        <strong><%= user.email %></strong>
+                    </span>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/logout">Logout</a>
+                </li>
+            <% } %>
+        </ul>
+
+    </div>
 </nav>

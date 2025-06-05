@@ -26,5 +26,4 @@ Article.belongsTo(Category);     // 1 artigo → 1 categoria
 
 Article.sync({force: false})
 
-
 module.exports = Article;
